@@ -1,22 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Order Pizzas</h1>
-    <h2>{{ note }}</h2>
+{% extends 'pizza/base.html' %}
+{% block body %}
+    <div class="container">
 
-    <form action="{% url 'pizzas' %}" method="post">
-        {% csrf_token %}
-        {{ formset.management_form }}
+        <h1>Order Pizzas</h1>
+        <h2>{{ note }}</h2>
 
-        {% for form in formset %}
-            {{ form }}
-            <br><br>
-        {% endfor %}
-        <input type="submit" value="Order Pizzas">
-    </form>
-</body>
-</html>
+        <form action="{% url 'pizzas' %}" method="post">
+            {% csrf_token %}
+            {{ formset.management_form }}
+
+            {% for form in formset %}
+                {{ form }}
+                <br><br>
+            {% endfor %}
+            <input type="submit" value="Order Pizzas">
+        </form>
+
+    </div>
+{% endblock %}
